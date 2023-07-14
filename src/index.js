@@ -4,11 +4,17 @@ import './index.css';
 import App from './App';
 import { BrowserRouter as Router } from 'react-router-dom';
 
+import { reducer } from './context/reducer';
+import { initialState } from './context/initialState';
+import { StateProvider } from './context/StateProvider';
+
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-  <Router>
-    <App />
-  </Router>
+  <StateProvider initialState={initialState} reducer={reducer} >
+    <Router>
+      <App />
+    </Router>
+  </StateProvider>
 );
 
 // If you want to start measuring performance in your app, pass a function

@@ -64,7 +64,33 @@ const AddBusiness = ()=>{
         })
         console.log('These are the candidates: ',newCandidates);
         console.log('placesDetails: ',placesDetails);
-    }
+    };
+
+    const addBusinesses = ()=>{
+        try {
+            placesDetails.map( async (place)=>{
+                const {data} = await axios({
+                    method:'post',
+                    url:'http://maspormenos.azurewebsites.net/places/add',
+                    data:{
+                        name:`${place.name}, ${place.formatted_address}`,
+                        lat: place.geometry.location.lat,
+                        lon: place.geometry.location.lng,
+                        maps_id: place.place_id
+                    },
+                    headers:{
+                        "Content-Type":"application/json"
+                    }
+                });
+    
+            });
+            alert('Negocio añadido correctamente!!');
+        } catch (error) {
+            console.log(error);
+            alert('Hubo un error: ', error);
+        }
+    };
+
 
         return (
             <div>
@@ -80,19 +106,23 @@ const AddBusiness = ()=>{
                                 <input type='text' ref={nameRef} />
                             </Autocomplete>
                             <button onClick={getDetailsLoop}>Validar</button>
+                            <button onClick={()=>setPlacesDatails([])}>Limpiar lista</button>
                         </div>
                         <div style={{display:'flex',justifyContent:'space-around'}}>
                             <div >
                                 {placesDetails.map((place)=>{
                                     return (
                                         <div key={place.place_id}>
-                                            <input type='text' value={place.name} /><br/>
+                                            <strong><label>Nombre del negoco/sucursal</label></strong><br/>
+                                            <input type='text' value={place.name+', '+place.formatted_address} /><br/>
+                                            <strong><label>Latitud</label></strong><br/>
                                             <input type='text' value={place.geometry.location.lat} /><br/>
-                                            <input type='text' value={place.geometry.location.lng}/>
+                                            <strong><label>Longitud</label></strong><br/>
+                                            <input type='text' value={place.geometry.location.lng}/><br/><br/>
                                         </div>
                                     )
                                 })}
-
+                                {placesDetails.length>0 && (<button onClick={addBusinesses}>Confirmar y agregar</button>)}
                             </div>
                             <GoogleMap center={center} zoom={12} mapContainerStyle={{width:'500px',height:'500px',textAlign:'center'}} onLoad={(map)=>setMap(map)}>
                                 {placesDetails.map((place)=>{
