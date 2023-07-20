@@ -1,10 +1,13 @@
 import React, { useState, useEffect} from 'react';
-import { useJsApiLoader, GoogleMap, Marker, Autocomplete} from '@react-google-maps/api';
+import { useJsApiLoader, GoogleMap, Marker, Autocomplete, InfoWindow} from '@react-google-maps/api';
 import { GiPositionMarker } from 'react-icons/gi';
 import axios from 'axios';
 
 //import * from 'dotenv'.config();
 import GreenMarker from '../img/pin.png';
+import HomeSinglePlace from './HomeSinglePlace';
+import { useStateValue } from '../context/StateProvider';
+import { actionTypes } from '../context/reducer';
 
 const center = {lat:-16.541220,lng:-68.077371}
 
@@ -16,6 +19,7 @@ const Home = ()=>{
     const [map, setMap] = useState(null);
     const [places, setPlaces] = useState([]);
     const [userCoords,setUserCoords] = useState({});
+    const [{place_selected},dispatch] = useStateValue();
 
     //const center = userCoords;
 
@@ -36,26 +40,27 @@ const Home = ()=>{
         console.log('Geolocation not supported');
     }
 
-    
-    
-    const fetchPlaces = async ()=>{
-        const {data} = await axios({
-            method:'get',
-            url:'http://maspormenos.azurewebsites.net/places',
-            headers:{
-                "Content-Type":"application/json",
-                "Access-Control-Allow-Origin": "*",
-                "Access-Control-Allow-Methods": 'HEAD, GET, POST, PUT, PATCH, DELETE',
-                "Access-Control-Allow-Headers": 'Origin,  X-Requested-With, Content-Type, X-Auth-Token'
-            }
-        });
-        console.log(data);
-        setPlaces(data);
-    };
+
 
     useEffect(()=>{
+        const fetchPlaces = async ()=>{
+            const {data} = await axios({
+                method:'get',
+                url:'http://maspormenos.azurewebsites.net/places',
+                headers:{
+                    "Content-Type":"application/json",
+                    "Access-Control-Allow-Origin": "*",
+                    "Access-Control-Allow-Methods": 'HEAD, GET, POST, PUT, PATCH, DELETE',
+                    "Access-Control-Allow-Headers": 'Origin,  X-Requested-With, Content-Type, X-Auth-Token'
+                }
+            });
+            console.log(data);
+            setPlaces(data);
+        };
         fetchPlaces();
-    },[places]);
+    }
+    ,[places]
+    );
 
     return (
         <div>
@@ -67,7 +72,7 @@ const Home = ()=>{
                 <GoogleMap center={center} zoom={14} mapContainerStyle={{width:'100vw',height:'80vh',textAlign:'center'}} onLoad={(map)=>setMap(map)} >
                 {places.map((place)=>{
                     return (
-                        <Marker key={place.latitude} position={{lat:place.latitude,lng:place.longitude}} />
+                        <HomeSinglePlace place={place}/>
                     )
                 })}
                 <Marker position={userCoords} label='My Location' icon={GreenMarker} opacity={0.5} />

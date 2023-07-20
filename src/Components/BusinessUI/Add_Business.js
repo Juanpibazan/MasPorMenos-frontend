@@ -98,7 +98,7 @@ const AddBusiness = ()=>{
     
             });
             alert('Negocio añadido correctamente!!');
-            fetchPlacesByBusinessId();
+            //fetchPlacesByBusinessId();
         } catch (error) {
             console.log(error);
             alert('Hubo un error: ', error);
@@ -132,7 +132,7 @@ const AddBusiness = ()=>{
             return data.pk;
         };
         getBusinessId();
-
+        fetchPlacesByBusinessId();
     });
 
     useEffect(()=>{
@@ -179,9 +179,12 @@ const AddBusiness = ()=>{
                                         </div>
                                     )
                                 })}
-                                {placesDetails.length>0 && (
+                                {placesDetails.length>0 && 
+                                <button onClick={addBusinesses}>Confirmar y agregar</button>
+                                }
+                                {savedPlaces.length>0 && (
                                     <div>
-                                        <button onClick={addBusinesses}>Confirmar y agregar</button>
+                                        
                                         <ul>
                                             {savedPlaces.map((place)=>{
                                                 return (
