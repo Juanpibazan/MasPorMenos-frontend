@@ -12,10 +12,12 @@ const HomeSinglePlace = ({place})=>{
     const [readyToSelect, setReadyToSelect] = useState(false);
     const [{place_selected},dispatch] = useStateValue();
     const [mapMarker, setMapMarker] = useState(null);
+    const [showingInfoWindow, setShowingInfoWindow] = useState(false);
 
     const selectMarker = ()=>{
         setSelectedMarker(place);
         setReadyToSelect(!readyToSelect);
+        setShowingInfoWindow(true);
     };
 
     useEffect(()=>{
@@ -51,7 +53,7 @@ const HomeSinglePlace = ({place})=>{
             }
         };
         //getProductsWithDiscounts();
-    },[readyToSelect,readyToSelect]);
+    },[selectMarker,readyToSelect]);
 
     /*useEffect(()=>{
         const getProductsWithDiscounts = async ()=>{
@@ -78,8 +80,8 @@ const HomeSinglePlace = ({place})=>{
     return (
         <div>
             <Marker onLoad={(mapMarker)=>setMapMarker(mapMarker)} key={place.latitude} position={{lat:place.latitude,lng:place.longitude}} onClick={selectMarker} >
-                {place_selected && Object.keys(place_selected).length !== 0 && (
-                    <InfoWindow anchor={mapMarker} position={{lat:place_selected.lat,lng:place_selected.lng}}>
+                {place_selected && Object.keys(place_selected).length !== 0 && showingInfoWindow && (
+                    <InfoWindow anchor={mapMarker} position={{lat:place_selected.lat,lng:place_selected.lng}} onCloseClick={()=>setShowingInfoWindow(false)} >
                         <h2>{place.name}</h2>
                     </InfoWindow>
                 )}
