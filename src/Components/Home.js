@@ -60,7 +60,7 @@ const Home = ()=>{
         };
         fetchPlaces();
     }
-    ,[]
+    ,[places]
     );
 
     return (
@@ -70,7 +70,7 @@ const Home = ()=>{
             )}
             {isLoaded && (
             <div className='map-container'>
-                {products_with_discounts.length>0 && (
+                {products_with_discounts && products_with_discounts.length>0 && (
                 <div className='info-pane-container'>
                 {products_with_discounts.map((product)=>{
                     return (
