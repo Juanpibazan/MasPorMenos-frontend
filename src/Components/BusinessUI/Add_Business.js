@@ -17,7 +17,8 @@ const AddBusiness = ()=>{
     const nameRef = useRef();
     const navigate = useNavigate();
 
-    const API_KEY = process.env.REACT_APP_MAPS_API_KEY;
+    //const API_KEY = process.env.REACT_APP_MAPS_API_KEY;
+    const API_KEY = 'AIzaSyAbluNxF5AA_wOlTwcG-i4pxMP3C5TlmyY';
     const [{user,business_id, place_selected},dispatch] = useStateValue();
 
     const { isLoaded } = useJsApiLoader({
