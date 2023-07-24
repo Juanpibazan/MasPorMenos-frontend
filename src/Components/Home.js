@@ -10,16 +10,17 @@ import { useStateValue } from '../context/StateProvider';
 import { actionTypes } from '../context/reducer';
 
 const center = {lat:-16.541220,lng:-68.077371}
+const API_KEY = process.env.REACT_APP_MAPS_API_KEY;
 
 const Home = ()=>{
     const { isLoaded } = useJsApiLoader({
-        googleMapsApiKey: 'AIzaSyAbluNxF5AA_wOlTwcG-i4pxMP3C5TlmyY',
+        googleMapsApiKey: API_KEY,
         libraries:['places']
     });
     const [map, setMap] = useState(null);
     const [places, setPlaces] = useState([]);
     const [userCoords,setUserCoords] = useState({});
-    const [{place_selected},dispatch] = useStateValue();
+    const [{place_selected,products_with_discounts},dispatch] = useStateValue();
 
     //const center = userCoords;
 
@@ -69,6 +70,22 @@ const Home = ()=>{
             )}
             {isLoaded && (
             <div className='map-container'>
+                {products_with_discounts.length>0 && (
+                <div className='info-pane-container'>
+                {products_with_discounts.map((product)=>{
+                    return (
+                        <div key={product.pk}>
+                            <span>Producto: </span><h3>{product.name}</h3>
+                            <span>Descuento de: </span>
+                            <h2>{product.percentage_discount} %</h2>
+                            <div className='apartar-btn-container'>
+                                <button className='apartar-btn'>Apartar</button>
+                            </div>
+                        </div>
+                    )
+                })}
+                </div>
+            )}
                 <GoogleMap center={center} zoom={14} mapContainerStyle={{width:'100vw',height:'80vh',textAlign:'center'}} onLoad={(map)=>setMap(map)} >
                 {places.map((place)=>{
                     return (
