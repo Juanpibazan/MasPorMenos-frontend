@@ -10,8 +10,7 @@ import { useStateValue } from '../context/StateProvider';
 import { actionTypes } from '../context/reducer';
 
 const center = {lat:-16.541220,lng:-68.077371}
-//const API_KEY = process.env.REACT_APP_MAPS_API_KEY;
-const API_KEY ='AIzaSyAbluNxF5AA_wOlTwcG-i4pxMP3C5TlmyY';
+const API_KEY = process.env.REACT_APP_MAPS_API_KEY;
 
 const Home = ()=>{
     const { isLoaded } = useJsApiLoader({
