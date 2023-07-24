@@ -60,7 +60,7 @@ const Home = ()=>{
         };
         fetchPlaces();
     }
-    ,[places]
+    ,[]
     );
 
     return (
