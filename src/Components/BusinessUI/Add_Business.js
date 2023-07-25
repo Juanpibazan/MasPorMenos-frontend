@@ -37,7 +37,7 @@ const AddBusiness = ()=>{
         const formattedPlace = nameRef.current.value.replace(' ','%20').replace(',','!4d');
         const {data} = await axios({
             method:'post',
-            url:`https://cors-anywhere.herokuapp.com/https://maps.googleapis.com/maps/api/place/findplacefromtext/json?input=${formattedPlace}&inputtype=textquery&key=${API_KEY}`,
+            url:`https://cryptic-headland-94862.herokuapp.com/https://maps.googleapis.com/maps/api/place/findplacefromtext/json?input=${formattedPlace}&inputtype=textquery&key=${API_KEY}`,
             headers:{
                 "Content-Type":"application/json",
                 "Access-Control-Allow-Origin": "*",
@@ -53,7 +53,7 @@ const AddBusiness = ()=>{
         const {place_id} = candidate;
         const {data} = await axios({
             method:'post',
-            url:`https://cors-anywhere.herokuapp.com/https://maps.googleapis.com/maps/api/place/details/json?place_id=${place_id}&key=${API_KEY}`,
+            url:`https://cryptic-headland-94862.herokuapp.com/https://maps.googleapis.com/maps/api/place/details/json?place_id=${place_id}&key=${API_KEY}`,
             headers:{
                 "Content-Type":"application/json",
                 "Access-Control-Allow-Origin": "*",
