@@ -15,7 +15,7 @@ const SingleProduct = ({product})=>{
 
     const selectProduct = ()=>{
         setProductSelected(product);
-        setReadyToAdd(!readyToAdd);
+        setReadyToAdd(true);
         console.log(productSelected);
     };
 
@@ -47,8 +47,10 @@ const SingleProduct = ({product})=>{
                 console.log(error);
             }
         };
-        addDiscount();
-        console.log(productSelected);
+        if(Object.keys(productSelected).length>0 && readyToAdd){
+            addDiscount();
+            console.log(productSelected);
+        }
     },[productSelected,readyToAdd]
     )
 

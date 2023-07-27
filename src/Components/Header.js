@@ -1,5 +1,5 @@
 import React, { useState, useEffect} from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 import { actionTypes } from '../context/reducer';
 import { useStateValue } from '../context/StateProvider';
@@ -8,12 +8,13 @@ import Logo4 from '../img/logo4.PNG';
 const Header = ()=>{
 
     const [{user},dispatch] = useStateValue();
+    const navigate = useNavigate();
 
     return (
         <div>
             <div className='header-container'>
                 <div className='logo-container'>
-                    <a><img src={Logo4} /></a>
+                    <a onClick={()=>navigate('/')}><img src={Logo4} /></a>
                 </div>
                 <nav className='navbar-container'>
                     <ul className='menu-container'>

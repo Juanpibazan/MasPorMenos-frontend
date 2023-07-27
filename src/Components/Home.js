@@ -75,9 +75,8 @@ const Home = ()=>{
                 {products_with_discounts.map((product)=>{
                     return (
                         <div key={product.pk}>
-                            <span>Producto: </span><h3>{product.name}</h3>
-                            <span>Descuento de: </span>
-                            <h2>{product.percentage_discount} %</h2>
+                            <h3>{product.name}</h3>
+                            <h2>{product.percentage_discount} % <trong>OFF</trong></h2>
                             <div className='apartar-btn-container'>
                                 <button className='apartar-btn'>Apartar</button>
                             </div>
