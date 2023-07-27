@@ -1,5 +1,6 @@
 import React, { useState, useEffect} from 'react';
 import { Link, useNavigate } from 'react-router-dom';
+import {PiHandbagSimpleFill} from 'react-icons/pi';
 
 import { actionTypes } from '../context/reducer';
 import { useStateValue } from '../context/StateProvider';
@@ -27,6 +28,9 @@ const Header = ()=>{
                         <li>
                             <Link>Contactanos</Link>
                         </li>
+                        <li>
+                            <Link to={'/business/register'}>Afilia tu negocio</Link>
+                        </li>
                         {!user && (
                         <div className='menu-container2'>
                             <li>
@@ -40,16 +44,17 @@ const Header = ()=>{
                         {user && (
                         <div className='menu-container2'>
                             <li>
+                                <Link>Mi Perfil</Link>
+                            </li>
+                            <li>
                                 <Link>Mis Ordenes</Link>
                             </li>
                             <li>
-                                <Link>Mi Perfil</Link>
+                                <a ><PiHandbagSimpleFill   /></a>
                             </li>
+
                         </div>
                         )}
-                        <li>
-                            <Link to={'/business/register'}>Afilia tu negocio</Link>
-                        </li>
                     </ul>
                 </nav>
             </div>

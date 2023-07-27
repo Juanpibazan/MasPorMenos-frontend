@@ -24,10 +24,26 @@
   border: 3px dotted #000;
   padding: 10px 2px;
   border-radius: 10px;
-  background-color: #8bf300;
+  background-color: #2ecf59;
   margin-bottom: 5px;
   box-shadow: 0px 0px 6px #f0f0f0;
   color: #fff;
+}
+
+.info-pane-subcontainer{
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 15px;
+}
+
+.info-pane-img-container{
+  display: flex;
+  justify-content: center;
+}
+
+.info-pane-img-container>img{
+  width: 100px;
+  height: 110px;
 }
 
 .apartar-btn-container{
@@ -37,10 +53,10 @@
 .apartar-btn{
   padding: 10px 15px;
   border-radius: 12px;
-  background-color: #fff;
   font-weight: bold;
   font-size: 20px;
   color: #00bd86;
+  background-color: #fff;
   border: 1px solid #00bd86;
   cursor: pointer;
 }
@@ -99,6 +115,82 @@
 .navbar-container li{
   list-style: none;
 }
+
+.SingleProduct{
+  margin-bottom: 30px;
+}
+
+.single-product-container{
+  display: flex;
+  justify-content: space-around;
+}
+
+.upload-img-btn{
+  padding: 10px 15px;
+  border-radius: 12px;
+  font-weight: bold;
+  font-size: 20px;
+  color: #fff;
+  background-color: #00bd86;
+  border: 1px solid #00bd86;
+  cursor: pointer;
+}
+
+.add-product-btn{
+  padding: 10px 15px;
+  border-radius: 12px;
+  font-weight: bold;
+  font-size: 20px;
+  color: #fff;
+  background-color: #00bd86;
+  border: 1px solid #00bd86;
+  cursor: pointer;
+}
+
+.add-discount-btn,.confirm-discount-btn, .login-btn, .register-btn{
+  padding: 10px 15px;
+  border-radius: 12px;
+  font-weight: bold;
+  font-size: 20px;
+  color: #fff;
+  background-color: #00bd86;
+  border: 1px solid #00bd86;
+  cursor: pointer;
+}
+
+.add-discount-btn:hover, .upload-img-btn:hover, .add-product-btn:hover,  .login-btn:hover, .register-btn:hover{
+  color: #00bd86;
+  background-color: #fff;
+}
+
+.login-btn-alternative, .register-btn-alternative{
+  padding: 10px 15px;
+  border-radius: 12px;
+  font-weight: bold;
+  font-size: 20px;
+  background-color: #f0f0f0;
+  color:#8bf300;
+  border: 1px solid #8bf300;
+  cursor: pointer;
+}
+
+.login-btn-alternative:hover, .register-btn-alternative:hover{
+  background-color: #8bf300;
+  color: #f0f0f0;
+}
+
+
+.cancel-btn{
+  padding: 10px 15px;
+  border-radius: 12px;
+  font-weight: bold;
+  font-size: 20px;
+  color: #fff;
+  background-color: #ca0000;
+  border: 1px solid #ca0000;
+  cursor: pointer;
+}
+
 
 
 @media screen and (max-width: 600px) {

@@ -41,15 +41,19 @@ const LoginBusiness = ()=>{
 
 
     return (
-        <div>
-            <h1>Login comercial</h1>
+        <div style={{textAlign:'center'}}>
+            <h1 style={{color:'#2ecf59'}}>Login comercial</h1>
             <div>
                 <h3>Por favor ingrese los datos de su empresa</h3>
-                <label>Email</label><br/>
-                <input type='email' value={email} onChange={(e)=>setEmail(e.target.value)} /><br/>
-                <label>Contraseña</label><br/>
-                <input type='password' value={pass} onChange={(e)=>setPass(e.target.value)} /><br/>
-                <button onClick={login}>Log In</button>
+                <strong><label>Email</label></strong><br/><br/>
+                <input style={{color:'#2ecf59',borderColor:'#2ecf59',padding:'5px 10px'}} type='email' value={email} onChange={(e)=>setEmail(e.target.value)} /><br/><br/>
+                <strong><label>Contraseña</label></strong><br/><br/>
+                <input style={{color:'#2ecf59',borderColor:'#2ecf59',padding:'5px 10px'}} type='password' value={pass} onChange={(e)=>setPass(e.target.value)} /><br/><br/>
+                <div style={{display:'flex', justifyContent:'center',gap:'10%'}}>
+                    <button className='login-btn' onClick={login}>Iniciar Sesion</button>
+                    <button className='register-btn-alternative' onClick={()=>navigate('/business/register')}>Registrar</button>
+                </div>
+
             </div>
         </div>
     )

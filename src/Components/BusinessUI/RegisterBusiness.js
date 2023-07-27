@@ -43,17 +43,20 @@ const RegisterBusiness = ()=>{
 
 
     return (
-        <div>
-            <h1>Registro comercial</h1>
+        <div style={{textAlign:'center'}}>
+            <h1 style={{color:'#2ecf59'}}>Registro comercial</h1>
             <div>
                 <h3>Por favor ingrese los datos comerciales de su empresa</h3>
-                <label>Nombre comercial</label><br/>
-                <input type='text' value={name} onChange={(e)=>setName(e.target.value)} /><br/>
-                <label>Email</label><br/>
-                <input type='email' value={email} onChange={(e)=>setEmail(e.target.value)} /><br/>
-                <label>Contraseña</label><br/>
-                <input type='password' value={pass} onChange={(e)=>setPass(e.target.value)} /><br/>
-                <button onClick={register}>Registrar</button>
+                <strong><label>Nombre comercial</label></strong><br/><br/>
+                <input style={{color:'#2ecf59',borderColor:'#2ecf59',padding:'5px 10px'}} type='text' value={name} onChange={(e)=>setName(e.target.value)} /><br/><br/>
+                <strong><label>Email</label></strong><br/><br/>
+                <input style={{color:'#2ecf59',borderColor:'#2ecf59',padding:'5px 10px'}} type='email' value={email} onChange={(e)=>setEmail(e.target.value)} /><br/><br/>
+                <strong><label>Contraseña</label></strong><br/><br/>
+                <input style={{color:'#2ecf59',borderColor:'#2ecf59',padding:'5px 10px'}} type='password' value={pass} onChange={(e)=>setPass(e.target.value)} /><br/><br/>
+                <div  style={{display:'flex', justifyContent:'center',gap:'10%'}}>
+                    <button className='register-btn' onClick={register}>Registrar</button>
+                    <button className='login-btn-alternative' onClick={()=>navigate('/business/login')}>Iniciar Sesion</button>
+                </div>
             </div>
         </div>
     )

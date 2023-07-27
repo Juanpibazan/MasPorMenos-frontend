@@ -45,6 +45,10 @@ const AddProduct = ()=>{
         });
         if(response.status===200){
             alert('Producto agregado exitosamente!');
+            setName('');
+            setDescription('');
+            setPrice(0);
+            setImg(null);
         }
     };
 
@@ -126,28 +130,28 @@ const AddProduct = ()=>{
                 <div>
                     <h2>Agregar productos a:</h2>
                     <h3>{place_selected.name}</h3>
-                        <div style={{display:'flex',justifyContent:'space-around'}}>
+                        <div style={{display:'flex',justifyContent:'space-around',width:'100%'}}>
                         <div>
-                            <label>Nombre del producto</label><br/>
+                            <label style={{color:'#00bd86',fontWeight:'bold'}}>Nombre del producto</label><br/>
                             <input type='text' value={name} onChange={(e)=>setName(e.target.value)} /><br/>
-                            <label>Description del producto</label><br/>
+                            <label style={{color:'#00bd86',fontWeight:'bold'}}>Description del producto</label><br/>
                             <textarea type='text' value={description} onChange={(e)=>setDescription(e.target.value)} /><br/>
-                            <label>Precio normal</label><br/>
+                            <label style={{color:'#00bd86',fontWeight:'bold'}}>Precio normal</label><br/>
                             <input type='text' value={price} onChange={(e)=>setPrice(e.target.value)} /><br/>
-                            <label>Imagen del producto</label><br/>
+                            <label style={{color:'#00bd86',fontWeight:'bold'}}>Imagen del producto</label><br/>
                             <input type='file' onChange={(e)=>setImg(e.target.files[0])} />
-                            <button onClick={sendImg}>Subir imagen</button>
+                            {img && <button className='upload-img-btn' onClick={sendImg}>Subir imagen</button>}
                             {progress.started && (
                                 <div>
                                     <h4>{progress.pc}%</h4>
-                                    <progress max="100" value={progress.pc} ></progress>
+                                    <progress style={{color:'#00bd86'}} max="100" value={progress.pc} ></progress>
                                 </div>
                             )}
-                            <img src={imgURL} /><br/>
-                            <button onClick={add_product}>Agregar</button>
+                            <div style={{display:'flex'}}><img src={imgURL} /></div><br/>
+                            <button className='add-product-btn' onClick={add_product}>Agregar</button>
                         </div>
                             {savedProducts.length>0 && (
-                            <div>
+                            <div style={{width:'30%'}}>
                             {savedProducts.map((product)=>{
                                 return (
                                     <SingleProduct product={product} />

@@ -49,7 +49,7 @@ const Login = ()=>{
                 <input type='email' value={email} onChange={(e)=>setEmail(e.target.value)} /><br/>
                 <label>Contraseña</label><br/>
                 <input type='password' value={pass} onChange={(e)=>setPass(e.target.value)} /><br/>
-                <button onClick={login}>Log In</button>
+                <button className='login-btn' onClick={login}>Log In</button>
             </div>
         </div>
     )

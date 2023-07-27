@@ -40,7 +40,7 @@ const SingleProduct = ({product})=>{
                 });
                 if(response.status===200){
                     alert('Descuento agregado exitosamente');
-                    //setDiscountVisible(!discountVisible);
+                    setDiscountVisible(false);
                 }
              
             } catch (error) {
@@ -55,17 +55,26 @@ const SingleProduct = ({product})=>{
     )
 
     return (
-        <div key={product.pk}>
-            <h3>{product.name}</h3>
-            <p>{product.description}</p>
-            <h4>{product.normal_price}</h4>
-            <button onClick={()=>setDiscountVisible(!discountVisible)}>Agregar descuento</button>
+        <div className='SingleProduct' key={product.pk}>
+            <div className='single-product-container'>
+                <div>
+                    <img src={product.image_url} />
+                </div>
+                <div style={{maxWidth:'30%'}}>
+                    <span style={{color:'#00bd86',fontWeight:'bold'}}>Nombre del producto: </span><h3>{product.name}</h3>
+                    <span style={{color:'#00bd86',fontWeight:'bold'}}>Descripcion del producto: </span><strong><p>{product.description}</p></strong>
+                    <span style={{color:'#00bd86',fontWeight:'bold'}}>Precio normal del producto: </span><h3> Bs. {product.normal_price}</h3>
+                    <button className='add-discount-btn' onClick={()=>setDiscountVisible(!discountVisible)}>Agregar descuento</button>
+                </div>
+
+            </div>
+
             {discountVisible && (
                 <div>
                     <label>Descuento en % </label>
                     <input type='text' value={discount} onChange={(e)=>setDiscount(e.target.value)} />
-                    <button onClick={selectProduct}>Confirmar</button>
-                    <button onClick={()=>setDiscountVisible(!discountVisible)} >Cancelar</button>
+                    <button className='confirm-discount-btn' onClick={selectProduct}>Confirmar</button>
+                    <button className='cancel-btn' onClick={()=>setDiscountVisible(!discountVisible)} >Cancelar</button>
                 </div>
             )}
         </div>

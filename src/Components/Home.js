@@ -75,8 +75,16 @@ const Home = ()=>{
                 {products_with_discounts.map((product)=>{
                     return (
                         <div key={product.pk}>
-                            <h3>{product.name}</h3>
-                            <h2>{product.percentage_discount} % <trong>OFF</trong></h2>
+                            <div className='info-pane-subcontainer'>
+                                <div>
+                                    <h3>{product.name}</h3>
+                                    <h2>{product.percentage_discount} % <strong>OFF</strong></h2>
+                                    <p>{product.description}</p>
+                                </div>
+                            <div className='info-pane-img-container'>
+                                <img src={product.image_url} />
+                            </div>
+                            </div>
                             <div className='apartar-btn-container'>
                                 <button className='apartar-btn'>Apartar</button>
                             </div>
