@@ -2,7 +2,8 @@ export const actionTypes = {
     SET_USER: 'SET_USER',
     SET_BUSINESS_ID: 'SET_BUSINESS_ID',
     SET_PLACE_SELECTED:'SET_PLACE_SELECTED',
-    SET_PRODUCTS_WITH_DISCOUNTS:'SET_PRODUCTS_WITH_DISCOUNTS'
+    SET_PRODUCTS_WITH_DISCOUNTS:'SET_PRODUCTS_WITH_DISCOUNTS',
+    SET_CART_ITEMS: 'SET_CART_ITEMS'
 };
 
 export const reducer = (state, action)=>{
@@ -27,6 +28,11 @@ export const reducer = (state, action)=>{
             return {
                 ...state,
                 products_with_discounts:action.products_with_discounts
+            }
+        case actionTypes.SET_CART_ITEMS:
+            return {
+                ...state,
+                cart_items: action.cart_items
             }
         default:
             return state;

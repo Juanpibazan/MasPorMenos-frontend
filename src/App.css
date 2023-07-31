@@ -93,6 +93,7 @@
   display: flex;
   justify-content: space-between;
   width: 70%;
+  gap: 3rem;
 }
 
 .menu-container2{
@@ -189,6 +190,18 @@
   background-color: #ca0000;
   border: 1px solid #ca0000;
   cursor: pointer;
+}
+
+.cart-container{
+  width: 70%;
+}
+
+.cart-single-container{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  vertical-align: middle;
+  list-style: 100%;
 }
 
 

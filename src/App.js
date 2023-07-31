@@ -9,6 +9,7 @@ import LoginBusiness from './Components/BusinessUI/LoginBusiness';
 import AddProduct from './Components/BusinessUI/AddProduct';
 import Login from './Components/Login';
 import Register from './Components/Register';
+import Cart from './Components/Cart';
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
         <Route path='/business/product/add' element={<AddProduct />} />
         <Route path='/login/user' element={<Login />} />
         <Route path='/register/user' element={<Register/>} />
+        <Route path='/cart' element={<Cart />} />
       </Routes>
     </div>
   );

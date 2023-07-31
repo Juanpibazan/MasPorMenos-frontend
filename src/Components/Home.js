@@ -8,6 +8,7 @@ import GreenMarker from '../img/pin.png';
 import HomeSinglePlace from './HomeSinglePlace';
 import { useStateValue } from '../context/StateProvider';
 import { actionTypes } from '../context/reducer';
+import SingleProductWithDiscount from './SingleProductWithDiscount';
 
 const center = {lat:-16.541220,lng:-68.077371}
 const API_KEY = process.env.REACT_APP_MAPS_API_KEY;
@@ -74,21 +75,7 @@ const Home = ()=>{
                 <div className='info-pane-container'>
                 {products_with_discounts.map((product)=>{
                     return (
-                        <div key={product.pk}>
-                            <div className='info-pane-subcontainer'>
-                                <div>
-                                    <h3>{product.name}</h3>
-                                    <h2>{product.percentage_discount} % <strong>OFF</strong></h2>
-                                    <p>{product.description}</p>
-                                </div>
-                            <div className='info-pane-img-container'>
-                                <img src={product.image_url} />
-                            </div>
-                            </div>
-                            <div className='apartar-btn-container'>
-                                <button className='apartar-btn'>Apartar</button>
-                            </div>
-                        </div>
+                        <SingleProductWithDiscount product={product} />
                     )
                 })}
                 </div>
