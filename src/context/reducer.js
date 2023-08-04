@@ -3,7 +3,9 @@ export const actionTypes = {
     SET_BUSINESS_ID: 'SET_BUSINESS_ID',
     SET_PLACE_SELECTED:'SET_PLACE_SELECTED',
     SET_PRODUCTS_WITH_DISCOUNTS:'SET_PRODUCTS_WITH_DISCOUNTS',
-    SET_CART_ITEMS: 'SET_CART_ITEMS'
+    SET_CART_ITEMS: 'SET_CART_ITEMS',
+    SET_ORDER: 'SET_ORDER',
+    SET_IS_CHANGE: 'SET_IS_CHANGE'
 };
 
 export const reducer = (state, action)=>{
@@ -33,6 +35,16 @@ export const reducer = (state, action)=>{
             return {
                 ...state,
                 cart_items: action.cart_items
+            }
+        case actionTypes.SET_ORDER:
+            return {
+                ...state,
+                order: action.order
+            }
+        case actionTypes.SET_IS_CHANGE:
+            return {
+                ...state,
+                is_change: action.is_change
             }
         default:
             return state;

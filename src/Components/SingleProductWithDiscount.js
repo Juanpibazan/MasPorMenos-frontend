@@ -7,20 +7,24 @@ import { useStateValue } from '../context/StateProvider';
 
 const SingleProductWithDiscount = ({product})=>{
 
-    const [cartItems, setCartItems] = useState([]);
     const [{cart_items,user}, dispatch] = useStateValue();
+    const [cartItems, setCartItems] = useState(cart_items ? cart_items : []);
 
     const addToCart = ()=>{
-        console.log('CartItems: ',cartItems);
+        setCartItems(cartItems.filter(item=>item.pk===product.pk).length===0 ? current => [...current,product] : cart_items);
     };
 
     useEffect(()=>{
-        addToCart();
+        cartItems.map((item)=>{
+            item.quantity=1;
+            return item;
+        });
         dispatch({
             type:actionTypes.SET_CART_ITEMS,
             cart_items:cartItems
         });
         localStorage.setItem('cart_items',JSON.stringify(cartItems));
+        console.log('CartItems: ', cartItems);
     },[cartItems]);
 
 
@@ -37,7 +41,7 @@ const SingleProductWithDiscount = ({product})=>{
                 </div>
                 </div>
                 <div className='apartar-btn-container'>
-                    <button onClick={()=>setCartItems([...cartItems,product])} className='apartar-btn'>Apartar</button>
+                    <button onClick={addToCart} className='apartar-btn'>Apartar</button>
                 </div>
             </div>
         )

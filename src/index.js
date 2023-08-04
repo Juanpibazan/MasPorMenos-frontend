@@ -8,6 +8,7 @@ import { reducer } from './context/reducer';
 import { initialState } from './context/initialState';
 import { StateProvider } from './context/StateProvider';
 
+
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <StateProvider initialState={initialState} reducer={reducer} >

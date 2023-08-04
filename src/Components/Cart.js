@@ -3,64 +3,73 @@ import { useNavigate } from 'react-router-dom';
 
 import { actionTypes } from '../context/reducer';
 import { useStateValue } from '../context/StateProvider';
+import CartItem from './CartItem';
 
 const Cart = ()=>{
 
-    const [{cart_items,user}, dispatch] = useStateValue();
+    const [{cart_items,user,order, place_selected,is_change}, dispatch] = useStateValue();
+    const [totalBs,setTotalBs] = useState(0);
+    const navigate = useNavigate();
+
+
+    useEffect(()=>{
+        const myArray = [];
+        const myPrices = document.getElementsByClassName('discounted_price');
+        const newArray = Array.from(myPrices).map((item)=>{
+            myArray.push(item.innerHTML.split('Bs. ')[1]);
+            console.log('MyArray: ',myArray);
+            return myArray;
+        });
+        const totalPrice = myArray.length>1 ? myArray.reduce((a,b)=>parseFloat(a)+parseFloat(b)) : parseFloat(myArray[0]);
+        setTotalBs(totalPrice);
+        console.log(totalBs);
+    },[is_change]);
     
+    const goToCheckOut = ()=>{
+        const orderArray = [];
+        cart_items.map((item)=>{
+            let product = {
+                name:item.name,
+                product_id: item.pk,
+                description: item.description,
+                image_url: item.image_url,
+                place_id: item.place_id,
+                place_name: item.place_name,
+                user_email:user.email,
+                maps_place_id: item.maps_place_id,
+                quantity: item.quantity,
+                discount_id:item.discount_id,
+                total_Bs: item.quantity*item.normal_price *(1-(item.percentage_discount/100))
+            }
+            orderArray.push(product);
+            return orderArray;
+        });
+        console.log('OrderArray: ',orderArray);
+        dispatch({
+            type:actionTypes.SET_ORDER,
+            order: orderArray
+        });
+        localStorage.setItem('order',JSON.stringify(orderArray));
+        return navigate('/checkout');
+    };
 
     return (
-        <div>
-            <div>
+        <div style={{display:'flex',justifyContent:'space-between',width:'100%',gap:'10px'}}>
+            <div style={{width:'70%'}}>
+                <h2>Carrito</h2>
                 {cart_items && cart_items.length>0 && (
                 cart_items.map((item)=>{
                     return (
-                    <div className='cart-container' key={item.pk}>
-                        <h2>Carrito</h2>
-                        <div className='cart-single-container'>
-                            <div>
-                                <img src={item.image_url} />
-                            </div>
-                            {/*<div>
-                            <h2>Producto: </h2>
-                            <h2>Descripcion: </h2>
-                            <h2>Precio normal: </h2>
-                            <h2>Descuento:</h2>
-                            <h2>Lo que pagarás:</h2>
-                            </div>
-                            <div>
-                            <h3>{item.name}</h3>
-                            <p>{item.description}</p>
-                            <h3>{item.normal_price}</h3>
-                            <h4>{item.percentage_discount}%</h4>
-                            <h2>Bs. {item.normal_price*(1-(item.percentage_discount/100))}</h2>
-                            </div> */}
-                            <table>
-                                <tr>
-                                    <th>Producto:</th>
-                                    <th>Description</th>
-                                    <th>Precio normal</th>
-                                    <th>Descuento</th>
-                                    <th>Lo que pagarás</th>
-                                </tr>
-                                <tbody>
-                                    <tr>
-                                        <td>{item.name}</td>
-                                        <td>{item.description}</td>
-                                        <td>{item.normal_price}</td>
-                                        <td>{item.percentage_discount}</td>
-                                        <td>Bs. {item.normal_price*(1-(item.percentage_discount/100))}</td>
-                                    </tr>
-                                </tbody>
-                            </table>
-
-                        </div>
-
-                    </div>
+                        <CartItem item={item} />
                     )
                 })
                 )}
             </div>
+            <div style={{width:'30%'}}>
+                <h1>Total a pagar:</h1>
+                <h2>Bs. {totalBs}</h2>
+                <button onClick={goToCheckOut}>Check Out</button>
+            </div>    
         </div>
     )
 };

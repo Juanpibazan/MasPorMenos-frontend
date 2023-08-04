@@ -10,6 +10,7 @@ import AddProduct from './Components/BusinessUI/AddProduct';
 import Login from './Components/Login';
 import Register from './Components/Register';
 import Cart from './Components/Cart';
+import CheckOut from './Components/CheckOut';
 
 function App() {
   return (
@@ -24,6 +25,7 @@ function App() {
         <Route path='/login/user' element={<Login />} />
         <Route path='/register/user' element={<Register/>} />
         <Route path='/cart' element={<Cart />} />
+        <Route path='/checkout' element={<CheckOut />} />
       </Routes>
     </div>
   );

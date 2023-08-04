@@ -193,7 +193,7 @@
 }
 
 .cart-container{
-  width: 70%;
+  width: 100%;
 }
 
 .cart-single-container{
@@ -204,6 +204,18 @@
   list-style: 100%;
 }
 
+.table-row{
+  text-align: center;
+}
+
+.table-row th{
+  border: 1px solid #8bf300;
+}
+
+.table-row td{
+  color: #00bd86;
+  background-color: #f0f0f0;
+}
 
 
 @media screen and (max-width: 600px) {
