@@ -42,7 +42,7 @@ const CartItem = ({item})=>{
     return (
         <div className='cart-container' key={item.pk}>
             <div className='cart-single-container'>
-                <div>
+                <div className='cart-img-container'>
                     <img src={item.image_url} />
                 </div>
                 {/*<div>

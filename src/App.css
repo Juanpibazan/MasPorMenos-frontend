@@ -217,6 +217,23 @@
   background-color: #f0f0f0;
 }
 
+.total-to-pay-container{
+  width: 30%;
+}
+
+.cart-container {
+  display: flex;
+  justify-content: space-between;
+  width:100%;
+  gap:10px;
+}
+
+.checkout-subcontainer{
+  display:flex;
+  justify-content:space-between;
+  width:60%;
+}
+
 
 @media screen and (max-width: 600px) {
 
@@ -269,5 +286,35 @@
     background-color: #00bd86;
     color: #fff;
   }
+
+  .total-to-pay-container{
+    width: 100%;
+  }
+  
+  .cart-container {
+    display: block;
+    width:100%;
+  }
+
+  .cart-single-container{
+    display: block;
+    font-size: 8px;
+  }
+
+  .cart-img-container img{
+    width: 100px;
+    height: 100px;
+  }
+
+  .checkout-subcontainer{
+    display:block;
+    width:100%;
+  }
+
+  .checkout-subcontainer img{
+    width: 100px;
+    height: 100px;
+  }
+  
 
 }

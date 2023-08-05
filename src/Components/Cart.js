@@ -54,7 +54,7 @@ const Cart = ()=>{
     };
 
     return (
-        <div style={{display:'flex',justifyContent:'space-between',width:'100%',gap:'10px'}}>
+        <div className='cart-container'>
             <div style={{width:'70%'}}>
                 <h2>Carrito</h2>
                 {cart_items && cart_items.length>0 && (
@@ -65,7 +65,7 @@ const Cart = ()=>{
                 })
                 )}
             </div>
-            <div style={{width:'30%'}}>
+            <div className='total-to-pay-container'>
                 <h1>Total a pagar:</h1>
                 <h2>Bs. {totalBs}</h2>
                 <button onClick={goToCheckOut}>Check Out</button>

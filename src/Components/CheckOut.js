@@ -15,7 +15,7 @@ const CheckOut = ()=>{
                     return (
                     <div key={item.place_id+item.product_id+item.discount_id} style={{width:'100%'}}>
                         <h3>{item.place_name}</h3>
-                        <div style={{display:'flex',justifyContent:'space-between',width:'60%'}}>
+                        <div className='checkout-subcontainer'>
                             <div style={{width:'20%',height:'80%'}}>
                                 <img src={item.image_url} />
                             </div>
