@@ -59,9 +59,9 @@ const CartItem = ({item})=>{
                 <h4>{item.percentage_discount}%</h4>
                 <h2>Bs. {item.normal_price*(1-(item.percentage_discount/100))}</h2>
                 </div> */}
-                <table>
+                <table className='cart-table'>
                     <tr className='table-row'>
-                        <th>Producto:</th>
+                        <th>Producto</th>
                         <th>Description</th>
                         <th>Precio normal</th>
                         <th>Descuento</th>
@@ -74,10 +74,13 @@ const CartItem = ({item})=>{
                             <td>{item.description}</td>
                             <td>{item.normal_price}</td>
                             <td>{item.percentage_discount}</td>
-                            <td>{quantity}</td>
+                            <td style={{display:'flex',justifyContent:'space-evenly'}}>
+                                <button className='change-qty-btn' onClick={()=>setQuantity(quantity+1)} >+</button>
+                                {quantity}
+                                <button className='change-qty-btn' onClick={()=>setQuantity(quantity-1)} >-</button>
+                            </td>
                             <td className='discounted_price'>Bs. {quantity*item.normal_price*(1-(item.percentage_discount/100))}</td>
-                            <button onClick={()=>setQuantity(quantity+1)} >+</button>
-                            <button onClick={()=>setQuantity(quantity-1)} >-</button>
+
                             <button onClick={removeFromCart}>Eliminar</button>
                         </tr>
                     </tbody>

@@ -54,8 +54,8 @@ const Cart = ()=>{
     };
 
     return (
-        <div className='cart-container'>
-            <div style={{width:'70%'}}>
+        <div className='big-cart-container'>
+            <div style={{width:'100%'}}>
                 <h2>Carrito</h2>
                 {cart_items && cart_items.length>0 && (
                 cart_items.map((item)=>{
