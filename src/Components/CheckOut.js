@@ -23,13 +23,14 @@ const CheckOut = ()=>{
 
     return (
         <div>
-            <h1>Check Out</h1>
-            <div>
+        <h1>Check Out</h1>
+        <div className='checkout-container'>
+            <div className='checkout-subcontainer'>
                 {order.map((item)=>{
                     return (
-                    <div key={item.place_id+item.product_id+item.discount_id} style={{width:'100%'}}>
+                    <div key={item.place_id+item.product_id+item.discount_id} className='checkout-item-container'>
                         <h3>{item.place_name}</h3>
-                        <div className='checkout-subcontainer'>
+                        <div className='checkout-item-subcontainer'>
                             <div style={{width:'20%',height:'80%'}}>
                                 <img src={item.image_url} />
                             </div>
@@ -41,12 +42,13 @@ const CheckOut = ()=>{
                 })}
 
             </div>
-            <div>
+            <div className='checkout-second-subcontainer'>
                 <h1>Bs. {totalPrice}</h1>
                 <div>
                     <h2>Payment Gateway</h2>
                 </div>
             </div>
+        </div>
         </div>
     )
 };

@@ -238,12 +238,6 @@
 }
 
 
-.checkout-subcontainer{
-  display:flex;
-  justify-content:space-between;
-  width:60%;
-}
-
 .change-qty-btn{
   border-radius: 50%;
   border: 1px solid #8bf300;
@@ -256,6 +250,42 @@
   line-height: 100%;
   cursor: pointer;
 }
+
+.checkout-container{
+  padding: 2rem;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.checkout-subcontainer{
+  width:60%;
+}
+
+.checkout-item-container{
+  padding: 1rem;
+  width: 100%;
+  border: 1px solid #00bd86;
+  border-radius: 10px;
+  background-color: #f0f0f0;
+  margin-bottom: 1rem;
+}
+
+.checkout-item-subcontainer{
+  display: flex;
+  justify-content: space-between;
+}
+
+.checkout-second-subcontainer{
+  width: 30%;
+  gap: 10px;
+}
+
+.checkout-item-container h3{
+  color: #00bd86;
+}
+
+
 
 @media screen and (max-width: 600px) {
 
@@ -307,6 +337,11 @@
   .apartar-btn:hover{
     background-color: #00bd86;
     color: #fff;
+  }
+
+  .big-cart-container {
+    display: block;
+    width:100%;
   }
 
   .total-to-pay-container{
